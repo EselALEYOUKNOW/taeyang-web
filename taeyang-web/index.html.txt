@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Taeyang Taekwondo</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header>
+  <h1>Taeyang Taekwondo</h1>
+  <p>Disciplina · Respeto · Perseverancia</p>
+</header>
+
+<main id="alumnos" class="grid"></main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
