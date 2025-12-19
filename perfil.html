@@ -4,6 +4,26 @@
   <meta charset="UTF-8">
   <title>Perfil del Alumno</title>
   <link rel="stylesheet" href="CSS/estilos.css">
+  <style>
+    /* Estilos básicos opcionales, puedes eliminarlos si ya tienes tu CSS */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    .perfil-foto {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .info-pago p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
 
@@ -12,12 +32,12 @@
 </header>
 
 <main class="perfil">
-  <img id="foto" class="perfil-foto">
-  <h2 id="nombre"></h2>
+  <img id="foto" class="perfil-foto" src="images/default.jpg" alt="Foto del alumno">
+  <h2 id="nombre">Cargando...</h2>
 
   <div class="info-pago">
-    <p><strong>Estado de pago:</strong> <span id="pago"></span></p>
-    <p><strong>Próximo pago:</strong> <span id="proximoPago"></span></p>
+    <p><strong>Estado de pago:</strong> <span id="pago">Cargando...</span></p>
+    <p><strong>Próximo pago:</strong> <span id="proximoPago">Cargando...</span></p>
   </div>
 </main>
 
