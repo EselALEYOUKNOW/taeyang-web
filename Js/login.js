@@ -10,7 +10,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// LEER ID DEL ALUMNO DESDE URL
+// LEER ID DESDE URL
 const params = new URLSearchParams(window.location.search);
 const alumnoId = params.get("id");
 
@@ -19,7 +19,6 @@ if (!alumnoId) {
   window.location.href = "index.html";
 }
 
-// FORM
 const form = document.getElementById("loginForm");
 const error = document.getElementById("error");
 
@@ -29,7 +28,7 @@ form.addEventListener("submit", async (e) => {
   const usuario = document.getElementById("usuario").value;
   const password = document.getElementById("password").value;
 
-  const alumnoRef = doc(db, "alumnos", alumnoId);
+  const alumnoRef = doc(db, "Alumnos", alumnoId);
   const alumnoSnap = await getDoc(alumnoRef);
 
   if (!alumnoSnap.exists()) {
