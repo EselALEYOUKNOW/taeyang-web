@@ -23,11 +23,12 @@ snapshot.forEach(doc => {
   card.innerHTML = `
     <img src="${alumno.fotoURL}">
     <h3>${alumno.nombre}</h3>
+    <p>🔒 Click → Login</p>
   `;
 
-  card.onclick = () => {
+  card.addEventListener("click", () => {
     window.location.href = `login.html?id=${doc.id}`;
-  };
+  });
 
   contenedor.appendChild(card);
 });
