@@ -1,34 +1,26 @@
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil del Alumno</title>
+  <link rel="stylesheet" href="CSS/estilos.css">
+</head>
+<body>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyD_ZTXQCIDsJcQ8I_2QzGyyYFQrkPlnfaE",
-    authDomain: "taeyang-taekwondo.firebaseapp.com",
-    projectId: "taeyang-taekwondo",
-  };
+<header>
+  <h1>Perfil del Alumno</h1>
+</header>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+<main class="perfil">
+  <img id="foto" class="perfil-foto">
+  <h2 id="nombre"></h2>
 
-  const alumnoId = localStorage.getItem("alumnoId");
+  <div class="info-pago">
+    <p><strong>Estado de pago:</strong> <span id="pago"></span></p>
+    <p><strong>Próximo pago:</strong> <span id="proximoPago"></span></p>
+  </div>
+</main>
 
-  if (!alumnoId) {
-    window.location.href = "login.html";
-  }
-
-  const alumnoRef = doc(db, "Alumnos", alumnoId);
-  const alumnoSnap = await getDoc(alumnoRef);
-
-  if (alumnoSnap.exists()) {
-    const alumno = alumnoSnap.data();
-
-    document.getElementById("perfilCard").innerHTML = `
-      <img src="fotos/${alumno.fotoURL}">
-      <h3>${alumno.nombre}</h3>
-      <p><strong>Estado de pago:</strong> ${alumno.pago}</p>
-      <p><strong>Próximo pago:</strong> ${alumno.proximoPago}</p>
-    `;
-  }
-</script>
-
+<script type="module" src="js/perfil.js"></script>
+</body>
+</html>
