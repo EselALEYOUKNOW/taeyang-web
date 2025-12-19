@@ -1,59 +1,86 @@
-/* ===== ESTILOS GENERALES ===== */
-body {
+/* ===== RESET BÁSICO ===== */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #0f0f0f;
-  color: #ffffff;
+  padding: 0;
 }
 
-/* ===== ENCABEZADO ===== */
+/* ===== CUERPO ===== */
+body {
+  font-family: 'Arial', sans-serif;
+  background: radial-gradient(circle at top, #222, #000);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
 header {
-  background: linear-gradient(135deg, #c00000, #7a0000);
-  padding: 30px;
   text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #b30000, #5a0000);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.2em;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 header p {
-  margin-top: 8px;
-  font-size: 1em;
-  opacity: 0.85;
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
-/* ===== GRID DE ALUMNOS ===== */
-.grid {
+/* ===== CONTENEDOR DE TARJETAS ===== */
+.contenedor {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 35px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* ===== TARJETAS ===== */
+/* ===== TARJETA TIPO POKÉMON ===== */
 .card {
-  background: #1b1b1b;
-  border-radius: 14px;
+  background: linear-gradient(145deg, #2a2a2a, #121212);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 3px solid gold;
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.9),
+    inset 0 0 15px rgba(255,215,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
 }
 
+/* Brillo tipo carta */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.15),
+    transparent 70%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+/* Hover */
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 
+    0 25px 45px rgba(0,0,0,1),
+    inset 0 0 20px rgba(255,215,0,0.25);
 }
 
+/* ===== IMAGEN ===== */
 .card img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-
-.card h3 {
-  margin: 15px 0;
-  font-size: 1.1em;
-}
+  width
