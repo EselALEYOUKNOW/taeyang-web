@@ -26,6 +26,23 @@
     <h2>Alumnos registrados</h2>
     <p>Administra pagos y estado de cada alumno</p>
   </section>
+<section class="admin-form">
+  <h2>Agregar nuevo alumno</h2>
+
+  <input type="text" id="nombreNuevo" placeholder="Nombre completo">
+  <input type="text" id="usuarioNuevo" placeholder="Usuario">
+  <input type="password" id="passwordNuevo" placeholder="Contraseña">
+
+  <input type="text" id="fotoNueva" placeholder="Foto (ej. ALEX.png)">
+  <input type="date" id="fechaNueva">
+
+  <select id="pagoNuevo">
+    <option value="PAGADO">PAGADO</option>
+    <option value="PENDIENTE">PENDIENTE</option>
+  </select>
+
+  <button id="btnAgregar">Agregar alumno</button>
+</section>
 
   <!-- LISTA ALUMNOS -->
   <section class="contenedor" id="adminPanel">
