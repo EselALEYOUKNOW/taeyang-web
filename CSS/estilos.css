@@ -37,7 +37,7 @@ header {
   padding: 28px 16px;
 background: #140101;
  background: linear-gradient(180deg,rgba(20, 1, 1, 1) 0%, rgba(77, 1, 1, 1) 44%, rgba(214, 0, 0, 1) 100%);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+
 }
 
 header h1 {
@@ -237,6 +237,7 @@ header p {
 .btn-admin:hover {
   transform: scale(1.08);
 }
+
 
 
 
