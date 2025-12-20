@@ -204,3 +204,23 @@ header p {
     padding: 5px 10px;
   }
 }
+
+.btn-admin {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #b30000, #5a0000);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+.btn-admin:hover {
+  transform: scale(1.08);
+}
