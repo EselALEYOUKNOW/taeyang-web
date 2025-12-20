@@ -52,14 +52,27 @@ header::before {
 }
 
 header h1 {
-  font-size: 2rem;
-  margin-bottom: 8px;
+  font-size: clamp(2.8rem, 6vw, 4.5rem); /* 🔥 GRANDE y responsivo */
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+
+  /* EFECTO VISUAL */
+  color: #fff;
+  text-shadow:
+    0 4px 10px rgba(0,0,0,0.8),
+    0 0 20px rgba(255, 215, 0, 0.4);
 }
 
+
 header p {
-  font-size: 0.85rem;
-  opacity: 0.9;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  letter-spacing: 2px;
+  opacity: 0.95;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
+
 
 /* =========================
    CONTENEDOR TARJETAS
@@ -248,6 +261,7 @@ header p {
 .btn-admin:hover {
   transform: scale(1.08);
 }
+
 
 
 
