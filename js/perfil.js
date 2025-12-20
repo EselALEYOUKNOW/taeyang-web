@@ -10,16 +10,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// OBTENER ID DESDE LA URL
+// ===============================
+// OBTENER ID
+// ===============================
 const params = new URLSearchParams(window.location.search);
-const alumnoId = params.get("id");
+let alumnoId = params.get("id");
 
+// 🔹 SI NO VIENE EN LA URL, BUSCAR EN LOCALSTORAGE
 if (!alumnoId) {
-  alert("Alumno no encontrado");
-  throw new Error("ID no encontrado");
+  alumnoId = localStorage.getItem("alumnoId");
 }
 
-// LEER ALUMNO
+// 🔹 SI AÚN NO EXISTE
+if (!alumnoId) {
+  alert("No hay alumno seleccionado");
+  throw new Error("Alumno ID no encontrado");
+}
+
+// ===============================
+// LEER FIRESTORE
+// ===============================
 const ref = doc(db, "Alumnos", alumnoId);
 const snap = await getDoc(ref);
 
@@ -30,8 +40,10 @@ if (!snap.exists()) {
 
 const alumno = snap.data();
 
+// ===============================
 // MOSTRAR DATOS
-document.getElementById("foto").src = alumno.fotoURL;
+// ===============================
+document.getElementById("foto").src = "fotos/" + alumno.fotoURL;
 document.getElementById("nombre").textContent = alumno.nombre;
 document.getElementById("pago").textContent = alumno.pago;
 document.getElementById("proximoPago").textContent = alumno.proximoPago;
