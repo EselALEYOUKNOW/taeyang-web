@@ -37,7 +37,7 @@ header {
   padding: 28px 16px;
 background: url("../fotos/TAE.jpg")no-repeat center top;
  background-size: cover;
- background-position: center 30%;
+ background-position: center 70%;
 }
 
 header::before {
@@ -248,6 +248,7 @@ header p {
 .btn-admin:hover {
   transform: scale(1.08);
 }
+
 
 
 
