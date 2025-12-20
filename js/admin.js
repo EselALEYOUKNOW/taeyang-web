@@ -11,7 +11,8 @@ import {
   collection,
   getDocs,
   doc,
-  updateDoc
+  updateDoc,
+  addDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // 🔐 CONFIG FIREBASE
@@ -95,3 +96,41 @@ async function cargarAlumnos() {
     };
   });
 }
+// ➕ AGREGAR NUEVO ALUMNO
+const btnAgregar = document.getElementById("btnAgregar");
+
+btnAgregar.addEventListener("click", async () => {
+  const nombre = document.getElementById("nombreNuevo").value;
+  const usuario = document.getElementById("usuarioNuevo").value;
+  const password = document.getElementById("passwordNuevo").value;
+  const foto = document.getElementById("fotoNueva").value;
+  const fecha = document.getElementById("fechaNueva").value;
+  const pago = document.getElementById("pagoNuevo").value;
+
+  if (!nombre || !usuario || !password) {
+    alert("Completa todos los campos");
+    return;
+  }
+
+  await addDoc(collection(db, "Alumnos"), {
+    nombre,
+    usuario,
+    password,
+    fotoURL: foto,
+    pago,
+    proximoPago: fecha
+  });
+
+  alert("Alumno agregado correctamente");
+
+  // Limpiar formulario
+  document.getElementById("nombreNuevo").value = "";
+  document.getElementById("usuarioNuevo").value = "";
+  document.getElementById("passwordNuevo").value = "";
+  document.getElementById("fotoNueva").value = "";
+  document.getElementById("fechaNueva").value = "";
+
+  // Recargar lista
+  cargarAlumnos();
+});
+
