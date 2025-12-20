@@ -1,4 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 import {
   getFirestore,
   collection,
@@ -15,52 +22,76 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
+// ELEMENTOS
 const panel = document.getElementById("adminPanel");
-panel.innerHTML = "";
+const logoutBtn = document.getElementById("logoutBtn");
+
+// 🔒 PROTECCIÓN DEL PANEL
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    // ❌ No logueado → fuera
+    window.location.href = "admin-login.html";
+    return;
+  }
+
+  // ✅ Logueado → cargar alumnos
+  cargarAlumnos();
+});
+
+// 🚪 CERRAR SESIÓN
+logoutBtn.addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "admin-login.html";
+});
 
 // 📥 CARGAR ALUMNOS
-const snapshot = await getDocs(collection(db, "Alumnos"));
+async function cargarAlumnos() {
+  panel.innerHTML = "";
 
-snapshot.forEach(docSnap => {
-  const alumno = docSnap.data();
-  const id = docSnap.id;
+  const snapshot = await getDocs(collection(db, "Alumnos"));
 
-  const card = document.createElement("div");
-  card.className = "card";
+  snapshot.forEach(docSnap => {
+    const alumno = docSnap.data();
+    const id = docSnap.id;
 
-  card.innerHTML = `
-    <img src="fotos/${alumno.fotoURL}">
-    <h3>${alumno.nombre}</h3>
+    const card = document.createElement("div");
+    card.className = "card";
 
-    <label>Estado de pago:</label>
-    <select id="pago-${id}">
-      <option value="PAGADO">PAGADO</option>
-      <option value="PENDIENTE">PENDIENTE</option>
-    </select>
+    card.innerHTML = `
+      <img src="fotos/${alumno.fotoURL}">
+      <h3>${alumno.nombre}</h3>
 
-    <label>Próximo pago:</label>
-    <input type="date" id="fecha-${id}" value="${alumno.proximoPago}">
+      <label>Estado de pago:</label>
+      <select id="pago-${id}">
+        <option value="PAGADO">PAGADO</option>
+        <option value="PENDIENTE">PENDIENTE</option>
+      </select>
 
-    <button id="btn-${id}">Guardar</button>
-  `;
+      <label>Próximo pago:</label>
+      <input type="date" id="fecha-${id}" value="${alumno.proximoPago || ""}">
 
-  panel.appendChild(card);
+      <button id="btn-${id}">Guardar</button>
+    `;
 
-  // Valores actuales
-  document.getElementById(`pago-${id}`).value = alumno.pago;
+    panel.appendChild(card);
 
-  // 💾 GUARDAR CAMBIOS
-  document.getElementById(`btn-${id}`).onclick = async () => {
-    const nuevoPago = document.getElementById(`pago-${id}`).value;
-    const nuevaFecha = document.getElementById(`fecha-${id}`).value;
+    // Valores actuales
+    document.getElementById(`pago-${id}`).value = alumno.pago || "PENDIENTE";
 
-    await updateDoc(doc(db, "Alumnos", id), {
-      pago: nuevoPago,
-      proximoPago: nuevaFecha
-    });
+    // 💾 GUARDAR CAMBIOS
+    document.getElementById(`btn-${id}`).onclick = async () => {
+      const nuevoPago = document.getElementById(`pago-${id}`).value;
+      const nuevaFecha = document.getElementById(`fecha-${id}`).value;
 
-    alert("Datos actualizados");
-  };
-});
+      await updateDoc(doc(db, "Alumnos", id), {
+        pago: nuevoPago,
+        proximoPago: nuevaFecha
+      });
+
+      alert("Datos actualizados");
+    };
+  });
+}
