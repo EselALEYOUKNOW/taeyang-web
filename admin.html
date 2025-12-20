@@ -2,20 +2,44 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Panel Admin | Taeyang</title>
+  <title>Panel Admin | Taeyang Taekwondo</title>
+
   <link rel="stylesheet" href="CSS/estilos.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<header>
+<header class="header-admin">
   <h1>Panel de Administración</h1>
-  <p>Control de alumnos y pagos</p>
+  <p>Taeyang Taekwondo</p>
+
+  <button id="logoutBtn" class="btn-logout">
+    Cerrar sesión
+  </button>
 </header>
 
-<main class="contenedor" id="adminPanel">
-  <p>Cargando alumnos...</p>
+<main class="contenedor-admin">
+
+  <!-- INFO -->
+  <section class="info-admin">
+    <h2>Alumnos registrados</h2>
+    <p>Administra pagos y estado de cada alumno</p>
+  </section>
+
+  <!-- LISTA ALUMNOS -->
+  <section class="contenedor" id="adminPanel">
+    <p>Cargando alumnos...</p>
+  </section>
+
 </main>
 
+<footer class="footer-admin">
+  <p>© Taeyang Taekwondo</p>
+</footer>
+
+<!-- JS ADMIN -->
 <script type="module" src="js/admin.js"></script>
+
 </body>
 </html>
