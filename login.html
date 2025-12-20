@@ -2,21 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Login Alumno</title>
+  <title>Acceso Alumno | Taeyang Taekwondo</title>
   <link rel="stylesheet" href="CSS/estilos.css">
 </head>
 <body>
 
 <header>
   <h1>Acceso Alumno</h1>
+  <p>Ingresa con el usuario y contraseña proporcionados</p>
 </header>
 
 <main class="login">
   <form class="login-box" id="loginForm">
-    <input type="text" id="usuario" placeholder="Usuario" required>
-    <input type="password" id="password" placeholder="Contraseña" required>
+
+    <input
+      type="text"
+      id="usuario"
+      placeholder="Usuario"
+      autocomplete="username"
+      required
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Contraseña"
+      autocomplete="current-password"
+      required
+    >
+
     <button type="submit">Entrar</button>
-    <p id="error" style="color:red; display:none;">Datos incorrectos</p>
+
+    <p id="error" style="color:red; display:none; margin-top:10px;">
+      Usuario o contraseña incorrectos
+    </p>
+
   </form>
 </main>
 
