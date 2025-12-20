@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="CSS/estilos.css">
+</head>
+<body>
+
+<header>
+  <h1>Panel Administrativo</h1>
+</header>
+
+<main class="login">
+  <form class="login-box" id="adminLogin">
+    <input type="email" id="email" placeholder="Correo admin" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button type="submit">Entrar</button>
+    <p id="error" style="color:red; display:none;">Acceso denegado</p>
+  </form>
+</main>
+
+<script type="module" src="js/admin-login.js"></script>
+</body>
+</html>
