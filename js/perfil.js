@@ -11,37 +11,31 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // ===============================
-// OBTENER ID
+// VERIFICAR SESIÓN
 // ===============================
-const params = new URLSearchParams(window.location.search);
-let alumnoId = params.get("id");
+const alumnoId = localStorage.getItem("alumnoId");
 
-// 🔹 SI NO VIENE EN LA URL, BUSCAR EN LOCALSTORAGE
 if (!alumnoId) {
-  alumnoId = localStorage.getItem("alumnoId");
-}
-
-// 🔹 SI AÚN NO EXISTE
-if (!alumnoId) {
-  alert("No hay alumno seleccionado");
-  throw new Error("Alumno ID no encontrado");
+  alert("Acceso no autorizado");
+  window.location.href = "login.html";
 }
 
 // ===============================
-// LEER FIRESTORE
+// OBTENER DATOS
 // ===============================
 const ref = doc(db, "Alumnos", alumnoId);
 const snap = await getDoc(ref);
 
 if (!snap.exists()) {
   alert("Alumno no existe");
-  throw new Error("Documento no existe");
+  localStorage.removeItem("alumnoId");
+  window.location.href = "login.html";
 }
 
 const alumno = snap.data();
 
 // ===============================
-// MOSTRAR DATOS
+// MOSTRAR PERFIL
 // ===============================
 document.getElementById("foto").src = "fotos/" + alumno.fotoURL;
 document.getElementById("nombre").textContent = alumno.nombre;
