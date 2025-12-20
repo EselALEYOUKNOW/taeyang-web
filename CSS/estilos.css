@@ -160,9 +160,10 @@ header p {
 }
 
 /* Celulares */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .contenedor {
     grid-template-columns: 1fr;
   }
 }
+
 
