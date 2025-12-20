@@ -42,7 +42,7 @@ header p {
 ========================= */
 .contenedor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 35px;
   padding: 40px;
   max-width: 1200px;
@@ -151,3 +151,18 @@ header p {
 .login-box input {
   width: 100%;
   padding: 10px
+}
+/* Tablets */
+@media (max-width: 1024px) {
+  .contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .contenedor {
+    grid-template-columns: 1fr;
+  }
+}
+
