@@ -52,7 +52,7 @@ header::before {
 }
 
 header h1 {
-  font-size: clamp(2.8rem, 6vw, 4.5rem); /* 🔥 GRANDE y responsivo */
+  font-size: clamp(2.5rem, 5vw, 4rem); /* 🔥 GRANDE y responsivo */
   font-weight: 900;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -261,6 +261,7 @@ header p {
 .btn-admin:hover {
   transform: scale(1.08);
 }
+
 
 
 
