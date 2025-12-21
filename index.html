@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<section class="hero">
+<!-- PANTALLA INICIAL -->
+<section class="hero" id="hero">
   <div class="hero-overlay">
     <h1>DOYANG TAEYANG</h1>
 
@@ -15,10 +16,12 @@
       TAEKWONDO • HAPKIDO • BONGSUL • HAEDOM KUMDO • TAEKKYEON
     </p>
 
-    <a href="home.html" class="btn-entrar">ENTRAR</a>
+    <button id="btnEntrar" class="btn-entrar">ENTRAR</button>
   </div>
 </section>
-<section class="menu-secciones">
+
+<!-- MENÚ (OCULTO AL INICIO) -->
+<section class="menu-secciones" id="menu">
 
   <a href="index.html" class="menu-item img-home">
     <span>Home</span>
@@ -37,6 +40,18 @@
   </a>
 
 </section>
+
+<!-- JS PARA MOSTRAR MENÚ -->
+<script>
+  const btn = document.getElementById("btnEntrar");
+  const hero = document.getElementById("hero");
+  const menu = document.getElementById("menu");
+
+  btn.addEventListener("click", () => {
+    hero.style.display = "none";
+    menu.style.display = "flex";
+  });
+</script>
 
 </body>
 </html>
