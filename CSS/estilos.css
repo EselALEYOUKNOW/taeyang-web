@@ -267,7 +267,7 @@ header p {
 .hero {
   height: 100vh;
   width: 100%;
-  background-image: url("../fotos/DOYANG.jpeg"); /* o .jpg */
+  background-image: url("../fotos/DOYANGG.jpeg"); /* o .jpg */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -442,6 +442,7 @@ header p {
   display: none;
   height: 100vh;
 }
+
 
 
 
