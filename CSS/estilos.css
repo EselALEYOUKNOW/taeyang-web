@@ -397,19 +397,19 @@ header p {
 ========================= */
 
 .img-home {
-  background-image: url("fotos/home.gif");
+  background-image: url("fotos/TKD.gif");
 }
 
 .img-alumnos {
-  background-image: url("fotos/alumnos.gif");
+  background-image: url("fotos/HAPKIDO.gif");
 }
 
 .img-login {
-  background-image: url("fotos/login.gif");
+  background-image: url("fotos/BONGSUL.gif");
 }
 
 .img-admin {
-  background-image: url("fotos/admin.gif");
+  background-image: url("fotos/HKUMDO.gif");
 }
 
 /* =========================
@@ -442,6 +442,7 @@ header p {
   display: none;
   height: 100vh;
 }
+
 
 
 
