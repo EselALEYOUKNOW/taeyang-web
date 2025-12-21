@@ -261,18 +261,78 @@ header p {
 .btn-admin:hover {
   transform: scale(1.08);
 }
+/* =========================
+   HERO INICIAL (PANTALLA)
+========================= */
+.hero {
+  height: 100vh;
+  width: 100%;
+  background-image: url("../fotos/DOYANG.jpeg"); /* o .jpg */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Oscurecer un poco para que el texto destaque */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.55);
+  width: 100%;
+  height: 100%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  text-align: center;
+  padding: 20px;
+}
 
+/* TÍTULO PRINCIPAL */
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 
+  text-shadow:
+    0 5px 15px rgba(0,0,0,0.9),
+    0 0 25px rgba(255,215,0,0.4);
+}
 
+/* DISCIPLINAS */
+.disciplinas {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  letter-spacing: 2px;
+  color: #ddd;
+  margin-bottom: 40px;
+  max-width: 90%;
+}
 
+/* BOTÓN ENTRAR */
+.btn-entrar {
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-decoration: none;
 
+  color: #000;
+  background: linear-gradient(135deg, gold, #ffcc00);
+  border-radius: 40px;
 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+  transition: all 0.3s ease;
+}
 
-
-
-
+.btn-entrar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 15px 35px rgba(0,0,0,1);
+}
 
