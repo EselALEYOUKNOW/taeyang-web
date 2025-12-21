@@ -386,7 +386,7 @@ header p {
   font-weight: 900;
   letter-spacing: 2px;
   color: #fff;
-  transform: rotate(-90deg);
+  transform: rotate(-00deg);
   text-transform: uppercase;
   text-shadow: 0 4px 15px rgba(0,0,0,0.9);
 }
@@ -442,6 +442,39 @@ header p {
   display: none;
   height: 100vh;
 }
+.header-taeyang {
+  text-align: center;
+  padding: 20px;
+}
+
+.seccion {
+  padding: 20px;
+  text-align: center;
+}
+
+.profesores,
+.artes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profesor,
+.arte {
+  width: 180px;
+}
+
+.profesor img,
+.arte img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
 
 
 
