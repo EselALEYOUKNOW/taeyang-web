@@ -437,4 +437,10 @@ header p {
   }
 }
 
+/* MENU OCULTO */
+.menu-secciones {
+  display: none;
+  height: 100vh;
+}
+
 
