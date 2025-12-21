@@ -397,19 +397,19 @@ header p {
 ========================= */
 
 .img-home {
-  background-image: url("fotos/home.jpg");
+  background-image: url("fotos/home.gif");
 }
 
 .img-alumnos {
-  background-image: url("fotos/alumnos.jpg");
+  background-image: url("fotos/alumnos.gif");
 }
 
 .img-login {
-  background-image: url("fotos/login.jpg");
+  background-image: url("fotos/login.gif");
 }
 
 .img-admin {
-  background-image: url("fotos/admin.jpg");
+  background-image: url("fotos/admin.gif");
 }
 
 /* =========================
@@ -442,6 +442,30 @@ header p {
   display: none;
   height: 100vh;
 }
+/* =========================
+   POSICIÓN ALTERNADA MENÚ
+========================= */
+
+/* 1 - Izquierda */
+.menu-item:nth-child(1) {
+  background-position: left center;
+}
+
+/* 2 - Derecha */
+.menu-item:nth-child(2) {
+  background-position: right center;
+}
+
+/* 3 - Izquierda */
+.menu-item:nth-child(3) {
+  background-position: left center;
+}
+
+/* 4 - Derecha */
+.menu-item:nth-child(4) {
+  background-position: right center;
+}
+
 
 
 
