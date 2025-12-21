@@ -336,3 +336,12 @@ header p {
   box-shadow: 0 15px 35px rgba(0,0,0,1);
 }
 
+/* =========================
+   AJUSTE IMAGEN EN PC
+========================= */
+@media (min-width: 1024px) {
+  .hero {
+    background-position: center 65%; /* 🔽 baja la imagen */
+  }
+}
+
