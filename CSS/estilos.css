@@ -341,7 +341,7 @@ header p {
 ========================= */
 @media (min-width: 1024px) {
   .hero {
-    background-position: center 65%; /* 🔽 baja la imagen */
+    background-position: center 45%; /* 🔽 baja la imagen */
   }
 }
 /* =========================
@@ -442,5 +442,6 @@ header p {
   display: none;
   height: 100vh;
 }
+
 
 
