@@ -41,3 +41,10 @@ document.getElementById("foto").src = "fotos/" + alumno.fotoURL;
 document.getElementById("nombre").textContent = alumno.nombre;
 document.getElementById("pago").textContent = alumno.pago;
 document.getElementById("proximoPago").textContent = alumno.proximoPago;
+
+if (alumno.comprobanteURL) {
+  const img = document.getElementById("comprobanteImg");
+  img.src = alumno.comprobanteURL;
+  img.style.display = "block";
+}
+
