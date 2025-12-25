@@ -1,11 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getFirestore,
-  doc,
-  getDoc
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔐 Config Firebase
+// 🔐 Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD_ZTXQCIDsJcQ8I_2QzGyyYFQrkPlnfaE",
   authDomain: "taeyang-taekwondo.firebaseapp.com",
@@ -15,20 +11,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 📌 Obtener ID del alumno desde la URL
-// ejemplo: perfil.html?id=ABC123
-const params = new URLSearchParams(window.location.search);
-const alumnoId = params.get("id");
+// 📌 Obtener ID del alumno
+const alumnoId = localStorage.getItem("alumnoId");
 
 if (!alumnoId) {
-  alert("Alumno no especificado");
-  throw new Error("No hay ID de alumno");
+  window.location.href = "login.html";
 }
 
-// 📥 Cargar datos del alumno
+// 📥 Cargar perfil
 async function cargarPerfil() {
-  const refAlumno = doc(db, "Alumnos", alumnoId);
-  const snap = await getDoc(refAlumno);
+  const ref = doc(db, "Alumnos", alumnoId);
+  const snap = await getDoc(ref);
 
   if (!snap.exists()) {
     alert("Alumno no encontrado");
@@ -37,17 +30,11 @@ async function cargarPerfil() {
 
   const alumno = snap.data();
 
-  // Datos básicos
   document.getElementById("nombre").textContent = alumno.nombre;
   document.getElementById("pago").textContent = alumno.pago || "—";
   document.getElementById("proximoPago").textContent = alumno.proximoPago || "—";
+  document.getElementById("foto").src = `fotos/${alumno.fotoURL}`;
 
-  // Foto de perfil
-  if (alumno.fotoURL) {
-    document.getElementById("foto").src = `fotos/${alumno.fotoURL}`;
-  }
-
-  // 🧾 Comprobante
   if (alumno.comprobanteURL) {
     const img = document.getElementById("comprobanteImg");
     img.src = alumno.comprobanteURL;
@@ -56,3 +43,4 @@ async function cargarPerfil() {
 }
 
 cargarPerfil();
+
