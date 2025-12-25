@@ -1,3 +1,4 @@
+<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
 import {
@@ -15,6 +16,13 @@ import {
   addDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
 // 🔐 CONFIG FIREBASE
 const firebaseConfig = {
   apiKey: "AIzaSyD_ZTXQCIDsJcQ8I_2QzGyyYFQrkPlnfaE",
@@ -25,20 +33,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 // ELEMENTOS
 const panel = document.getElementById("adminPanel");
 const logoutBtn = document.getElementById("logoutBtn");
 
 // 🔒 PROTECCIÓN DEL PANEL
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, (user) => {
   if (!user) {
-    // ❌ No logueado → fuera
     window.location.href = "admin-login.html";
     return;
   }
-
-  // ✅ Logueado → cargar alumnos
   cargarAlumnos();
 });
 
@@ -54,7 +60,7 @@ async function cargarAlumnos() {
 
   const snapshot = await getDocs(collection(db, "Alumnos"));
 
-  snapshot.forEach(docSnap => {
+  snapshot.forEach((docSnap) => {
     const alumno = docSnap.data();
     const id = docSnap.id;
 
@@ -62,7 +68,7 @@ async function cargarAlumnos() {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="fotos/${alumno.fotoURL}">
+      <img src="fotos/${alumno.fotoURL || 'default.jpg'}">
       <h3>${alumno.nombre}</h3>
 
       <label>Estado de pago:</label>
@@ -74,15 +80,27 @@ async function cargarAlumnos() {
       <label>Próximo pago:</label>
       <input type="date" id="fecha-${id}" value="${alumno.proximoPago || ""}">
 
-      <button id="btn-${id}">Guardar</button>
+      <label>Comprobante de pago:</label>
+      <input type="file" id="file-${id}" accept="image/*">
+
+      <button id="subir-${id}">Subir comprobante</button>
+
+      ${
+        alumno.comprobanteURL
+          ? `<a href="${alumno.comprobanteURL}" target="_blank">Ver comprobante</a>`
+          : `<p>No hay comprobante</p>`
+      }
+
+      <button id="btn-${id}">Guardar cambios</button>
     `;
 
     panel.appendChild(card);
 
-    // Valores actuales
-    document.getElementById(`pago-${id}`).value = alumno.pago || "PENDIENTE";
+    // valores actuales
+    document.getElementById(`pago-${id}`).value =
+      alumno.pago || "PENDIENTE";
 
-    // 💾 GUARDAR CAMBIOS
+    // 💾 GUARDAR DATOS
     document.getElementById(`btn-${id}`).onclick = async () => {
       const nuevoPago = document.getElementById(`pago-${id}`).value;
       const nuevaFecha = document.getElementById(`fecha-${id}`).value;
@@ -94,8 +112,32 @@ async function cargarAlumnos() {
 
       alert("Datos actualizados");
     };
+
+    // 📤 SUBIR COMPROBANTE
+    document.getElementById(`subir-${id}`).onclick = async () => {
+      const fileInput = document.getElementById(`file-${id}`);
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Selecciona una imagen");
+        return;
+      }
+
+      const storageRef = ref(storage, `fotos/comprobantes/${id}.jpg`);
+
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+
+      await updateDoc(doc(db, "Alumnos", id), {
+        comprobanteURL: url
+      });
+
+      alert("Comprobante subido correctamente");
+      cargarAlumnos();
+    };
   });
 }
+
 // ➕ AGREGAR NUEVO ALUMNO
 const btnAgregar = document.getElementById("btnAgregar");
 
@@ -121,26 +163,15 @@ btnAgregar.addEventListener("click", async () => {
     proximoPago: fecha
   });
 
-  alert("Alumno agregado correctamente");
+  alert("Alumno agregado");
 
-  // Limpiar formulario
   document.getElementById("nombreNuevo").value = "";
   document.getElementById("usuarioNuevo").value = "";
   document.getElementById("passwordNuevo").value = "";
   document.getElementById("fotoNueva").value = "";
   document.getElementById("fechaNueva").value = "";
 
-  // Recargar lista
   cargarAlumnos();
 });
-
-
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-
-const storage = getStorage(app);
+</script>
 
