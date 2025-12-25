@@ -1,4 +1,3 @@
-<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
 import {
@@ -39,7 +38,7 @@ const storage = getStorage(app);
 const panel = document.getElementById("adminPanel");
 const logoutBtn = document.getElementById("logoutBtn");
 
-// 🔒 PROTECCIÓN DEL PANEL
+// 🔒 PROTECCIÓN
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "admin-login.html";
@@ -48,7 +47,7 @@ onAuthStateChanged(auth, (user) => {
   cargarAlumnos();
 });
 
-// 🚪 CERRAR SESIÓN
+// 🚪 LOGOUT
 logoutBtn.addEventListener("click", async () => {
   await signOut(auth);
   window.location.href = "admin-login.html";
@@ -68,7 +67,7 @@ async function cargarAlumnos() {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="fotos/${alumno.fotoURL || 'default.jpg'}">
+      <img src="fotos/${alumno.fotoURL || "default.jpg"}">
       <h3>${alumno.nombre}</h3>
 
       <label>Estado de pago:</label>
@@ -96,11 +95,10 @@ async function cargarAlumnos() {
 
     panel.appendChild(card);
 
-    // valores actuales
-    document.getElementById(`pago-${id}`).value =
-      alumno.pago || "PENDIENTE";
+    // Valores actuales
+    document.getElementById(`pago-${id}`).value = alumno.pago || "PENDIENTE";
 
-    // 💾 GUARDAR DATOS
+    // 💾 Guardar datos
     document.getElementById(`btn-${id}`).onclick = async () => {
       const nuevoPago = document.getElementById(`pago-${id}`).value;
       const nuevaFecha = document.getElementById(`fecha-${id}`).value;
@@ -113,7 +111,7 @@ async function cargarAlumnos() {
       alert("Datos actualizados");
     };
 
-    // 📤 SUBIR COMPROBANTE
+    // 📸 Subir comprobante
     document.getElementById(`subir-${id}`).onclick = async () => {
       const fileInput = document.getElementById(`file-${id}`);
       const file = fileInput.files[0];
@@ -132,13 +130,13 @@ async function cargarAlumnos() {
         comprobanteURL: url
       });
 
-      alert("Comprobante subido correctamente");
+      alert("Comprobante subido");
       cargarAlumnos();
     };
   });
 }
 
-// ➕ AGREGAR NUEVO ALUMNO
+// ➕ AGREGAR ALUMNO
 const btnAgregar = document.getElementById("btnAgregar");
 
 btnAgregar.addEventListener("click", async () => {
@@ -164,14 +162,5 @@ btnAgregar.addEventListener("click", async () => {
   });
 
   alert("Alumno agregado");
-
-  document.getElementById("nombreNuevo").value = "";
-  document.getElementById("usuarioNuevo").value = "";
-  document.getElementById("passwordNuevo").value = "";
-  document.getElementById("fotoNueva").value = "";
-  document.getElementById("fechaNueva").value = "";
-
   cargarAlumnos();
 });
-</script>
-
