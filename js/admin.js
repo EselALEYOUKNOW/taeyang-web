@@ -134,3 +134,13 @@ btnAgregar.addEventListener("click", async () => {
   cargarAlumnos();
 });
 
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+const storage = getStorage(app);
+
