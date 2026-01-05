@@ -563,8 +563,57 @@ h2 {
   text-decoration: none;
   transition: transform 0.3s ease;
 }
+.fila-arte {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+/* Imagen principal */
+.img-principal img {
+  width: 140px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.img-principal img:hover {
+  transform: scale(1.1);
+}
+
+/* Texto */
+.info-arte {
+  flex: 1;
+}
+
+.info-arte h3 {
+  margin: 0;
+  color: gold;
+  font-size: 1.5rem;
+}
+
+.info-arte p {
+  margin-top: 6px;
+  color: #ddd;
+}
+
+/* Imagen lateral */
+.img-lateral img {
+  width: 120px;
+  height: auto;
+  border-radius: 12px;
+  background: white;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-lateral img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px gold;
+}
 
 .btn-sede:hover {
   transform: scale(1.08);
 }
+
 
