@@ -616,4 +616,174 @@ h2 {
   transform: scale(1.08);
 }
 
+/* =========================
+   NOVEDADES - CARRUSEL
+========================= */
 
+.novedades {
+  display: none;
+  text-align: center;
+  padding: 30px 20px;
+  background: #111;
+  color: white;
+}
+
+
+.novedades h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+
+.carrusel-novedades {
+
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+
+}
+
+
+.novedad {
+
+  display: none;
+  background: rgba(255,255,255,0.08);
+
+  border: 2px solid #b00000;
+
+  border-radius: 15px;
+
+  padding: 25px;
+
+  animation: aparecer 0.6s ease;
+
+}
+
+
+.novedad.activa {
+
+  display: block;
+
+}
+
+
+.novedad h3 {
+
+  font-size: 25px;
+  margin-bottom: 15px;
+
+}
+
+
+.novedad p {
+
+  font-size: 17px;
+  line-height: 1.5;
+
+}
+
+
+
+
+@keyframes aparecer {
+
+  from {
+
+    opacity:0;
+    transform: translateX(40px);
+
+  }
+
+
+  to {
+
+    opacity:1;
+    transform: translateX(0);
+
+  }
+
+}
+
+
+
+/* =========================
+        MENU
+========================= */
+
+.menu-secciones {
+
+  display:none;
+
+  justify-content:center;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+  padding:30px;
+
+}
+
+
+.menu-item {
+
+  width:170px;
+  height:120px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:end;
+
+  padding-bottom:15px;
+
+  color:white;
+
+  text-decoration:none;
+
+  font-weight:bold;
+
+  border-radius:15px;
+
+  overflow:hidden;
+
+  background-size:cover;
+
+  background-position:center;
+
+  transition:.3s;
+
+}
+
+
+
+.menu-item:hover {
+
+  transform:scale(1.05);
+
+}
+
+
+
+/* Adaptación celular */
+
+@media(max-width:600px){
+
+  .novedades h2{
+
+    font-size:25px;
+
+  }
+
+
+  .menu-item{
+
+    width:140px;
+    height:100px;
+
+  }
+
+}
