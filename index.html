@@ -32,58 +32,56 @@
 
 
 <!-- NOVEDADES -->
+<!-- NOVEDADES -->
 <section class="novedades" id="novedades">
 
-  <h2>📰 Novedades</h2>
+    <h2>NOVEDADES</h2>
 
+    <div class="carrusel-novedades">
 
-  <div class="carrusel-novedades">
+        <div class="novedad" style="background-image:url('fotos/EXAMEN.jpg');">
 
+            <div class="contenido">
+                <h3>🏆 Examen de Grado</h3>
 
-    <div class="novedad" style="background-image:url('fotos/EXAMEN.jpg')">
+                <p>
+                    Próximo examen de cintas.
+                    Prepárate con anticipación y demuestra tu disciplina,
+                    técnica y espíritu marcial.
+                </p>
+            </div>
 
-      <h3>🏆 Examen de grado</h3>
+        </div>
 
-      <p>
-        Próximo examen de cintas.
-        Prepárate y demuestra tu disciplina.
-      </p>
+        <div class="novedad" style="background-image:url('fotos/SEMINARIO.jpg');">
+
+            <div class="contenido">
+                <h3>🥋 Seminario Especial</h3>
+
+                <p>
+                    Participa en nuestro entrenamiento especial con técnicas
+                    avanzadas de Taekwondo y Hapkido.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="novedad" style="background-image:url('fotos/ALUMNODES.jpg');">
+
+            <div class="contenido">
+                <h3>⭐ Alumno Destacado</h3>
+
+                <p>
+                    Reconocemos el esfuerzo, la constancia y el espíritu
+                    marcial de nuestros alumnos.
+                </p>
+            </div>
+
+        </div>
 
     </div>
-
-
-
-    <div class="novedad" style="background-image:url('fotos/SEMINARIO.jpg')">
-
-      <h3>🥋 Seminario especial</h3>
-
-      <p>
-        Entrenamiento especial de artes marciales.
-      </p>
-
-    </div>
-
-
-
-    <div class="novedad" style="background-image:url('fotos/ALUMNODES.jpg')">
-
-      <h3>⭐ Alumno destacado</h3>
-
-      <p>
-        Reconociendo esfuerzo, constancia y espíritu marcial.
-      </p>
-
-    </div>
-
-
-  </div>
-
 
 </section>
-
-
-
-
 <!-- MENÚ -->
 <section class="menu-secciones" id="menu">
 
@@ -114,57 +112,45 @@
 
 
 <script>
-
 const btn = document.getElementById("btnEntrar");
 const hero = document.getElementById("hero");
 const novedades = document.getElementById("novedades");
 const menu = document.getElementById("menu");
 
-
 btn.addEventListener("click", () => {
 
-  hero.style.display = "none";
-  novedades.style.display = "block";
-  menu.style.display = "flex";
+    hero.style.display = "none";
+    novedades.style.display = "block";
+    menu.style.display = "flex";
 
 });
 
-
-
-// CARRUSEL
 
 const tarjetas = document.querySelectorAll(".novedad");
 
 let actual = 0;
 
-
-// Mostrar primera tarjeta
-
+tarjetas.forEach(t => t.style.display = "none");
 tarjetas[0].style.display = "block";
-
 
 setInterval(() => {
 
+    tarjetas[actual].style.opacity = "0";
 
-  tarjetas[actual].style.display = "none";
+    setTimeout(() => {
 
+        tarjetas[actual].style.display = "none";
 
-  actual++;
+        actual++;
 
+        if (actual >= tarjetas.length) {
+            actual = 0;
+        }
 
-  if(actual >= tarjetas.length){
-    actual = 0;
-  }
+        tarjetas[actual].style.display = "block";
+        tarjetas[actual].style.opacity = "1";
 
-
-  tarjetas[actual].style.display = "block";
-
+    }, 300);
 
 }, 5000);
-
-
 </script>
-
-
-</body>
-</html>
