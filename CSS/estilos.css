@@ -616,48 +616,81 @@ h2 {
   transform: scale(1.08);
 }
 
+
 /* =========================
-   NOVEDADES - CARRUSEL
+   NOVEDADES - CARRUSEL GRANDE
 ========================= */
 
 .novedades {
-  display: none;
-  text-align: center;
-  padding: 30px 20px;
-  background: #111;
-  color: white;
+
+  display:none;
+
+  width:100%;
+  min-height:420px;
+
+  padding:50px 20px;
+
+  background:rgba(0,0,0,0.85);
+
+  color:white;
+
+  text-align:center;
+
 }
 
 
 .novedades h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
+
+  font-size:42px;
+
+  margin-bottom:35px;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
 }
+
 
 
 .carrusel-novedades {
 
-  max-width: 600px;
-  margin: auto;
-  position: relative;
-  overflow: hidden;
+  width:90%;
+
+  max-width:1100px;
+
+  margin:auto;
 
 }
 
 
+
 .novedad {
 
-  display: none;
-  background: rgba(255,255,255,0.08);
+  display:none;
 
-  border: 2px solid #b00000;
+  min-height:260px;
 
-  border-radius: 15px;
+  padding:50px;
 
-  padding: 25px;
+  border-radius:25px;
 
-  animation: aparecer 0.6s ease;
+  border:3px solid gold;
+
+  background:
+
+  linear-gradient(
+  rgba(0,0,0,.65),
+  rgba(0,0,0,.65)
+  );
+
+  box-shadow:
+
+  0 15px 40px rgba(0,0,0,.8),
+
+  0 0 20px rgba(255,215,0,.3);
+
+  animation:aparecer .6s ease;
 
 }
 
@@ -665,90 +698,138 @@ h2 {
 
 .novedad h3 {
 
-  font-size: 25px;
-  margin-bottom: 15px;
+  font-size:38px;
+
+  margin-bottom:25px;
+
+  color:gold;
 
 }
+
 
 
 .novedad p {
 
-  font-size: 17px;
-  line-height: 1.5;
+  font-size:24px;
+
+  line-height:1.5;
 
 }
-
 
 
 
 @keyframes aparecer {
 
-  from {
+from{
 
-    opacity:0;
-    transform: translateX(40px);
+opacity:0;
 
-  }
+transform:translateY(40px);
 
+}
 
-  to {
+to{
 
-    opacity:1;
-    transform: translateX(0);
+opacity:1;
 
-  }
+transform:translateY(0);
+
+}
 
 }
 
 
 
 /* =========================
-        MENU
+        MENU VERTICAL
 ========================= */
+
 
 .menu-secciones {
 
   display:none;
 
-  justify-content:center;
+  flex-direction:column;
 
-  gap:20px;
+  width:100%;
 
-  flex-wrap:wrap;
+  height:auto;
 
-  padding:30px;
+  padding:30px 0;
+
+  gap:15px;
 
 }
 
 
+
+/* TARJETAS MENU */
+
 .menu-item {
 
-  width:170px;
-  height:120px;
+  width:100%;
+
+  height:180px;
 
   display:flex;
 
+  align-items:center;
+
   justify-content:center;
 
-  align-items:end;
-
-  padding-bottom:15px;
-
-  color:white;
-
-  text-decoration:none;
-
-  font-weight:bold;
-
-  border-radius:15px;
+  position:relative;
 
   overflow:hidden;
+
 
   background-size:cover;
 
   background-position:center;
 
-  transition:.3s;
+
+  text-decoration:none;
+
+}
+
+
+
+/* OSCURECER */
+
+.menu-item::after {
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:rgba(0,0,0,.45);
+
+}
+
+
+
+/* TEXTO */
+
+.menu-item span {
+
+  position:relative;
+
+  z-index:2;
+
+  color:white;
+
+  font-size:3rem;
+
+  font-weight:900;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+  text-shadow:
+
+  0 5px 15px black;
 
 }
 
@@ -756,7 +837,77 @@ h2 {
 
 .menu-item:hover {
 
-  transform:scale(1.05);
+  filter:brightness(1.25);
+
+  transform:scale(1.01);
+
+}
+
+
+
+/* CELULAR */
+
+@media(max-width:600px){
+
+
+.novedades {
+
+  min-height:320px;
+
+  padding:30px 15px;
+
+}
+
+
+
+.novedades h2 {
+
+  font-size:30px;
+
+}
+
+
+
+.novedad {
+
+  padding:30px 20px;
+
+  min-height:200px;
+
+}
+
+
+
+.novedad h3 {
+
+  font-size:25px;
+
+}
+
+
+
+.novedad p {
+
+  font-size:17px;
+
+}
+
+
+
+.menu-item {
+
+  height:130px;
+
+}
+
+
+
+.menu-item span {
+
+  font-size:2rem;
+
+}
+
 
 }
 
