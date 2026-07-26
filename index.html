@@ -40,7 +40,7 @@
   <div class="carrusel-novedades">
 
 
-    <div class="novedad activa">
+    <div class="novedad">
 
       <h3>🏆 Examen de grado</h3>
 
@@ -113,7 +113,6 @@
 
 
 
-<!-- JS PARA MOSTRAR MENÚ -->
 <script>
 
 const btn = document.getElementById("btnEntrar");
@@ -125,42 +124,47 @@ const menu = document.getElementById("menu");
 btn.addEventListener("click", () => {
 
   hero.style.display = "none";
-
   novedades.style.display = "block";
-
   menu.style.display = "flex";
 
 });
 
 
-</script>
 
-  <script>
+// CARRUSEL
 
-let novedades = document.querySelectorAll(".novedad");
+const tarjetas = document.querySelectorAll(".novedad");
+
 let actual = 0;
 
 
-function cambiarNovedad(){
+// Mostrar primera tarjeta
 
-  novedades[actual].classList.remove("activa");
+tarjetas[0].style.display = "block";
+
+
+setInterval(() => {
+
+
+  tarjetas[actual].style.display = "none";
+
 
   actual++;
 
-  if(actual >= novedades.length){
+
+  if(actual >= tarjetas.length){
     actual = 0;
   }
 
-  novedades[actual].classList.add("activa");
 
-}
+  tarjetas[actual].style.display = "block";
 
 
-// Cambia cada 5 segundos
-setInterval(cambiarNovedad, 5000);
+}, 5000);
 
 
 </script>
+
 
 </body>
 </html>
