@@ -1,5 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD_ZTXQCIDsJcQ8I_2QzGyyYFQrkPlnfaE",
@@ -12,7 +18,13 @@ const db = getFirestore(app);
 
 const contenedor = document.getElementById("alumnos");
 
-const snapshot = await getDocs(collection(db, "Alumnos"));
+// Solo mostrar alumnos activos
+const q = query(
+  collection(db, "Alumnos"),
+  where("estado", "==", "activo")
+);
+
+const snapshot = await getDocs(q);
 
 snapshot.forEach((docSnap) => {
   const alumno = docSnap.data();
