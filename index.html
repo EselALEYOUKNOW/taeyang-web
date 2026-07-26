@@ -135,6 +135,32 @@ btn.addEventListener("click", () => {
 
 </script>
 
+  <script>
+
+let novedades = document.querySelectorAll(".novedad");
+let actual = 0;
+
+
+function cambiarNovedad(){
+
+  novedades[actual].classList.remove("activa");
+
+  actual++;
+
+  if(actual >= novedades.length){
+    actual = 0;
+  }
+
+  novedades[actual].classList.add("activa");
+
+}
+
+
+// Cambia cada 5 segundos
+setInterval(cambiarNovedad, 5000);
+
+
+</script>
 
 </body>
 </html>
