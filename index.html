@@ -1,57 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Doyang Taeyang</title>
   <link rel="stylesheet" href="CSS/estilos.css">
 </head>
+
 <body>
+
 
 <!-- PANTALLA INICIAL -->
 <section class="hero" id="hero">
+
   <div class="hero-overlay">
+
     <h1>DOYANG TAEYANG</h1>
 
     <p class="disciplinas">
       TAEKWONDO • HAPKIDO • BONGSUL • HAEDOM KUMDO • TAEKKYEON
     </p>
 
-    <button id="btnEntrar" class="btn-entrar">ENTRAR</button>
+    <button id="btnEntrar" class="btn-entrar">
+      ENTRAR
+    </button>
+
   </div>
+
 </section>
 
-<!-- MENÚ (OCULTO AL INICIO) -->
+
+
+<!-- NOVEDADES -->
+<section class="novedades" id="novedades">
+
+  <h2>📰 Novedades</h2>
+
+
+  <div class="carrusel-novedades">
+
+
+    <div class="novedad activa">
+
+      <h3>🏆 Examen de grado</h3>
+
+      <p>
+        Próximo examen de cintas.
+        Prepárate y demuestra tu disciplina.
+      </p>
+
+    </div>
+
+
+
+    <div class="novedad">
+
+      <h3>🥋 Seminario especial</h3>
+
+      <p>
+        Entrenamiento especial de artes marciales.
+      </p>
+
+    </div>
+
+
+
+    <div class="novedad">
+
+      <h3>⭐ Alumno destacado</h3>
+
+      <p>
+        Reconociendo esfuerzo, constancia y espíritu marcial.
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+
+<!-- MENÚ -->
 <section class="menu-secciones" id="menu">
 
+
   <a href="index.html" class="menu-item img-home">
-    <span>Home</span>
+    <span>HOME</span>
   </a>
+
 
   <a href="escuela.html" class="menu-item img-escuela">
-    <span>Conoce TAEYANG</span>
+    <span>CONOCE TAEYANG</span>
   </a>
-  
+
+
   <a href="home.html" class="menu-item img-alumnos">
-    <span>Alumnos</span>
+    <span>ALUMNOS</span>
   </a>
+
 
   <a href="admin.html" class="menu-item img-admin">
-    <span>Admin</span>
+    <span>ADMIN</span>
   </a>
 
+
 </section>
+
+
+
 
 <!-- JS PARA MOSTRAR MENÚ -->
 <script>
-  const btn = document.getElementById("btnEntrar");
-  const hero = document.getElementById("hero");
-  const menu = document.getElementById("menu");
 
-  btn.addEventListener("click", () => {
-    hero.style.display = "none";
-    menu.style.display = "flex";
-  });
+const btn = document.getElementById("btnEntrar");
+const hero = document.getElementById("hero");
+const novedades = document.getElementById("novedades");
+const menu = document.getElementById("menu");
+
+
+btn.addEventListener("click", () => {
+
+  hero.style.display = "none";
+
+  novedades.style.display = "block";
+
+  menu.style.display = "flex";
+
+});
+
+
 </script>
+
 
 </body>
 </html>
