@@ -70,6 +70,12 @@ async function cargarAlumnos() {
       <img src="fotos/${alumno.fotoURL || "default.jpg"}">
       <h3>${alumno.nombre}</h3>
 
+      <label>Estado del alumno:</label>
+      <select id="estado-${id}">
+        <option value="activo">ACTIVO</option>
+        <option value="inactivo">INACTIVO</option>
+      </select>
+
       <label>Estado de pago:</label>
       <select id="pago-${id}">
         <option value="PAGADO">PAGADO</option>
@@ -96,14 +102,18 @@ async function cargarAlumnos() {
     panel.appendChild(card);
 
     // Valores actuales
+    document.getElementById(`estado-${id}`).value = alumno.estado || "activo";
     document.getElementById(`pago-${id}`).value = alumno.pago || "PENDIENTE";
 
     // 💾 Guardar datos
     document.getElementById(`btn-${id}`).onclick = async () => {
+
+      const nuevoEstado = document.getElementById(`estado-${id}`).value;
       const nuevoPago = document.getElementById(`pago-${id}`).value;
       const nuevaFecha = document.getElementById(`fecha-${id}`).value;
 
       await updateDoc(doc(db, "Alumnos", id), {
+        estado: nuevoEstado,
         pago: nuevoPago,
         proximoPago: nuevaFecha
       });
@@ -113,6 +123,7 @@ async function cargarAlumnos() {
 
     // 📸 Subir comprobante
     document.getElementById(`subir-${id}`).onclick = async () => {
+
       const fileInput = document.getElementById(`file-${id}`);
       const file = fileInput.files[0];
 
@@ -140,6 +151,7 @@ async function cargarAlumnos() {
 const btnAgregar = document.getElementById("btnAgregar");
 
 btnAgregar.addEventListener("click", async () => {
+
   const nombre = document.getElementById("nombreNuevo").value;
   const usuario = document.getElementById("usuarioNuevo").value;
   const password = document.getElementById("passwordNuevo").value;
@@ -158,9 +170,11 @@ btnAgregar.addEventListener("click", async () => {
     password,
     fotoURL: foto,
     pago,
-    proximoPago: fecha
+    proximoPago: fecha,
+    estado: "activo"
   });
 
   alert("Alumno agregado");
+
   cargarAlumnos();
 });
