@@ -132,8 +132,6 @@
 </section>
 
 
-
-
 <script>
 const btn = document.getElementById("btnEntrar");
 const hero = document.getElementById("hero");
@@ -149,31 +147,95 @@ btn.addEventListener("click", () => {
 });
 
 
+/* ===== CARRUSEL ===== */
+
 const tarjetas = document.querySelectorAll(".novedad");
+const izquierda = document.querySelector(".izquierda");
+const derecha = document.querySelector(".derecha");
+const contIndicadores = document.querySelector(".indicadores");
 
 let actual = 0;
+let intervalo;
 
+// Crear circulitos
+tarjetas.forEach((_, i) => {
+
+    const punto = document.createElement("div");
+
+    punto.classList.add("indicador");
+
+    if (i === 0) {
+        punto.classList.add("activo");
+    }
+
+    punto.addEventListener("click", () => {
+        mostrar(i);
+        reiniciar();
+    });
+
+    contIndicadores.appendChild(punto);
+
+});
+
+const indicadores = document.querySelectorAll(".indicador");
+
+function mostrar(indice) {
+
+    tarjetas[actual].style.display = "none";
+    indicadores[actual].classList.remove("activo");
+
+    actual = indice;
+
+    tarjetas[actual].style.display = "block";
+    indicadores[actual].classList.add("activo");
+
+}
+
+// Ocultar todas
 tarjetas.forEach(t => t.style.display = "none");
-tarjetas[0].style.display = "block";
 
-setInterval(() => {
+// Mostrar la primera
+mostrar(0);
 
-    tarjetas[actual].style.opacity = "0";
+function siguiente() {
 
-    setTimeout(() => {
+    mostrar((actual + 1) % tarjetas.length);
 
-        tarjetas[actual].style.display = "none";
+}
 
-        actual++;
+function anterior() {
 
-        if (actual >= tarjetas.length) {
-            actual = 0;
-        }
+    mostrar((actual - 1 + tarjetas.length) % tarjetas.length);
 
-        tarjetas[actual].style.display = "block";
-        tarjetas[actual].style.opacity = "1";
+}
 
-    }, 300);
+function iniciar() {
 
-}, 5000);
+    intervalo = setInterval(siguiente, 5000);
+
+}
+
+function reiniciar() {
+
+    clearInterval(intervalo);
+    iniciar();
+
+}
+
+derecha.addEventListener("click", () => {
+
+    siguiente();
+    reiniciar();
+
+});
+
+izquierda.addEventListener("click", () => {
+
+    anterior();
+    reiniciar();
+
+});
+
+iniciar();
+
 </script>
