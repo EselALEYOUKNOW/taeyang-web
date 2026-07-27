@@ -964,3 +964,90 @@ to{
     background: #ffd95a;
     transform: scale(1.05);
 }
+.carrusel-novedades{
+    position:relative;
+}
+
+.flecha{
+
+    position:absolute;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(0,0,0,.55);
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    z-index:20;
+
+}
+
+.flecha:hover{
+
+    background:#d4af37;
+    color:black;
+
+}
+
+.izquierda{
+
+    left:15px;
+
+}
+
+.derecha{
+
+    right:15px;
+
+}
+
+.indicadores{
+
+    position:absolute;
+
+    bottom:15px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+}
+
+.indicador{
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:#888;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.indicador.activo{
+
+    background:#d4af37;
+
+    transform:scale(1.3);
+
+}
