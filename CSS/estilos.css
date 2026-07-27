@@ -947,3 +947,20 @@ to{
   }
 
 }
+.btn-ver-mas{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 35px;
+    background: #d4af37;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: .3s;
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+.btn-ver-mas:hover{
+    background: #ffd95a;
+    transform: scale(1.05);
+}
